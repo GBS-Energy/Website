@@ -504,7 +504,7 @@
   const setThemeColorMeta = (theme) => {
     const meta = document.querySelector('meta[name="theme-color"]');
     if (!(meta instanceof HTMLMetaElement)) return;
-    meta.setAttribute('content', theme === 'dark' ? '#0b1411' : '#ffffff');
+    meta.setAttribute('content', theme === 'dark' ? '#0a1420' : '#ebf2fb');
   };
 
   const applyStoredTheme = () => {
@@ -3372,8 +3372,8 @@
     const setActive = (k) => {
       activeKey = k;
       for (const [key, btn] of keyButtons.entries()) {
-        btn.style.borderColor = key === k ? 'rgba(95,174,138,.8)' : 'rgba(0,0,0,.14)';
-        btn.style.background = key === k ? 'rgba(95,174,138,.16)' : 'rgba(255,255,255,.75)';
+        btn.style.borderColor = key === k ? 'rgba(47,110,166,.8)' : 'rgba(0,0,0,.14)';
+        btn.style.background = key === k ? 'rgba(47,110,166,.16)' : 'rgba(255,255,255,.75)';
       }
     };
 

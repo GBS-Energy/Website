@@ -114,7 +114,7 @@ if ($formType === 'speicherinvest') {
     $headers = [];
     $headers[] = 'MIME-Version: 1.0';
     $headers[] = 'Content-Type: text/plain; charset=UTF-8';
-    $headers[] = 'From: GBS AG <' . $sender . '>';
+    $headers[] = 'From: GBS Energy GmbH <' . $sender . '>';
     $headers[] = 'Reply-To: ' . $replyTo;
     $headers[] = 'X-Mailer: PHP/' . phpversion();
 
@@ -182,7 +182,7 @@ $replyTo = $cleanHeaderValue($email);
 $headers = [];
 $headers[] = 'MIME-Version: 1.0';
 $headers[] = 'Content-Type: text/plain; charset=UTF-8';
-$headers[] = 'From: GBS AG <' . $sender . '>';
+$headers[] = 'From: GBS Energy GmbH <' . $sender . '>';
 $headers[] = 'Reply-To: ' . $replyTo;
 $headers[] = 'X-Mailer: PHP/' . phpversion();
 
