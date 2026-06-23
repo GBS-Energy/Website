@@ -1,9 +1,9 @@
-<?php
+﻿<?php
 declare(strict_types=1);
 
 // IONOS-compatible contact form handler.
 // Adjust recipient/sender to your domain mailboxes.
-const GBS_CONTACT_RECIPIENT = 'kontakt@gbsag.com';
+const GBS_CONTACT_RECIPIENT = 'kontakt@gbsenergy.de';
 const GBS_SPEICHERINVEST_RECIPIENT = 'speicher@gbsag.com';
 const GBS_CONTACT_SENDER = 'noreply@gbsag.com';
 
@@ -188,7 +188,7 @@ $headers[] = 'X-Mailer: PHP/' . phpversion();
 
 $ok = @mail(GBS_CONTACT_RECIPIENT, $encodedSubject, $mailBody, implode("\r\n", $headers), '-f ' . $sender);
 if (!$ok) {
-    $respond(500, false, 'Ihre Anfrage konnte aktuell nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie an kontakt@gbsag.com.');
+    $respond(500, false, 'Ihre Anfrage konnte aktuell nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie an kontakt@gbsenergy.de.');
 }
 
 $respond(200, true, 'Vielen Dank. Ihre Anfrage wurde gesendet.');
