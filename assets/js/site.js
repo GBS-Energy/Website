@@ -499,18 +499,16 @@
 
   const themeQuery = () => window.matchMedia('(prefers-color-scheme: dark)');
   const systemTheme = () => (themeQuery().matches ? 'dark' : 'light');
-  const effectiveTheme = () => storedTheme() ?? systemTheme();
+  const effectiveTheme = () => storedTheme() ?? 'dark';
 
   const setThemeColorMeta = (theme) => {
     const meta = document.querySelector('meta[name="theme-color"]');
     if (!(meta instanceof HTMLMetaElement)) return;
-    meta.setAttribute('content', theme === 'dark' ? '#152538' : '#2f6ea6');
+    meta.setAttribute('content', theme === 'light' ? '#ebf2fb' : '#2f6ea6');
   };
 
   const applyStoredTheme = () => {
-    const theme = storedTheme();
-    if (theme) document.documentElement.dataset.theme = theme;
-    else document.documentElement.removeAttribute('data-theme');
+    document.documentElement.dataset.theme = storedTheme() ?? 'dark';
     setThemeColorMeta(effectiveTheme());
   };
 
@@ -2149,11 +2147,10 @@
 
     const apply = () => {
       const theme = resolveTheme();
-      const useDark = theme === 'dark';
       imgs.forEach((img) => {
         const inHeader = Boolean(img.closest('.site-header'));
-        const onAccentHeader = inHeader && theme === 'light';
-        const target = useDark || onAccentHeader ? img.dataset.logoDark : img.dataset.logoLight;
+        const useDark = inHeader || theme === 'dark';
+        const target = useDark ? img.dataset.logoDark : img.dataset.logoLight;
         if (!target) return;
         if (img.getAttribute('src') === target) return;
         img.setAttribute('src', target);
@@ -3318,7 +3315,7 @@
     panel.style.border = '1px solid rgba(0,0,0,.12)';
     panel.style.background = 'rgba(255,255,255,.85)';
     panel.style.backdropFilter = 'blur(10px)';
-    panel.style.color = '#122018';
+    panel.style.color = '#1a2e3f';
     panel.style.font = '500 12px/1.35 Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif';
     panel.style.boxShadow = '0 20px 50px rgba(0,0,0,.18)';
 
