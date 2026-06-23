@@ -504,7 +504,7 @@
   const setThemeColorMeta = (theme) => {
     const meta = document.querySelector('meta[name="theme-color"]');
     if (!(meta instanceof HTMLMetaElement)) return;
-    meta.setAttribute('content', theme === 'dark' ? '#0a1420' : '#ebf2fb');
+    meta.setAttribute('content', theme === 'dark' ? '#152538' : '#2f6ea6');
   };
 
   const applyStoredTheme = () => {
@@ -2148,9 +2148,12 @@
     const resolveTheme = () => document.documentElement.dataset.theme || (mq.matches ? 'dark' : 'light');
 
     const apply = () => {
-      const useDark = resolveTheme() === 'dark';
+      const theme = resolveTheme();
+      const useDark = theme === 'dark';
       imgs.forEach((img) => {
-        const target = useDark ? img.dataset.logoDark : img.dataset.logoLight;
+        const inHeader = Boolean(img.closest('.site-header'));
+        const onAccentHeader = inHeader && theme === 'light';
+        const target = useDark || onAccentHeader ? img.dataset.logoDark : img.dataset.logoLight;
         if (!target) return;
         if (img.getAttribute('src') === target) return;
         img.setAttribute('src', target);

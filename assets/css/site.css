@@ -11,7 +11,12 @@
   --bg-grad-1:#ebf2fb;
   --bg-grad-2:#ffffff;
   --bg-soft:#ebf2fb;
-  --header-bg:rgba(235,242,251,.92);
+  --header-bg:#2f6ea6;
+  --header-fg:#ebf2fb;
+  --header-fg-muted:rgba(235,242,251,.82);
+  --header-fg-strong:#ffffff;
+  --header-border:rgba(255,255,255,.16);
+  --header-shadow:rgba(18,42,68,.24);
   --header-height:72px;
 }
 
@@ -29,7 +34,12 @@
     --bg-grad-1:#071018;
     --bg-grad-2:#0a1420;
     --bg-soft:#0c1828;
-    --header-bg:rgba(16,29,46,.88);
+    --header-bg:#152538;
+    --header-fg:#ebf2fb;
+    --header-fg-muted:rgba(235,242,251,.72);
+    --header-fg-strong:#ffffff;
+    --header-border:rgba(77,143,212,.28);
+    --header-shadow:rgba(0,0,0,.42);
   }
 }
 
@@ -47,7 +57,12 @@
   --bg-grad-1:#ebf2fb;
   --bg-grad-2:#ffffff;
   --bg-soft:#ebf2fb;
-  --header-bg:rgba(235,242,251,.92);
+  --header-bg:#2f6ea6;
+  --header-fg:#ebf2fb;
+  --header-fg-muted:rgba(235,242,251,.82);
+  --header-fg-strong:#ffffff;
+  --header-border:rgba(255,255,255,.16);
+  --header-shadow:rgba(18,42,68,.24);
 }
 
 :root[data-theme="dark"]{
@@ -63,7 +78,12 @@
   --bg-grad-1:#071018;
   --bg-grad-2:#0a1420;
   --bg-soft:#0c1828;
-  --header-bg:rgba(16,29,46,.88);
+  --header-bg:#152538;
+  --header-fg:#ebf2fb;
+  --header-fg-muted:rgba(235,242,251,.72);
+  --header-fg-strong:#ffffff;
+  --header-border:rgba(77,143,212,.28);
+  --header-shadow:rgba(0,0,0,.42);
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
@@ -1891,12 +1911,19 @@ figure figcaption a:focus-visible{
 
   padding:12px 48px;
 
-  background:var(--header-bg);
-  backdrop-filter:blur(6px);
-  border-bottom:1px solid var(--line);
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--header-bg) 86%, #ffffff 14%) 0%,
+      var(--header-bg) 100%
+    );
+  backdrop-filter:none;
+  -webkit-backdrop-filter:none;
+  border-bottom:1px solid var(--header-border);
+  box-shadow:0 8px 28px var(--header-shadow);
 
   transform:translateY(0);
-  transition:transform .28s cubic-bezier(.2,.7,.2,1), background-color .28s ease;
+  transition:transform .28s cubic-bezier(.2,.7,.2,1), background-color .28s ease, box-shadow .28s ease;
 }
 
 .site-header-inner{
@@ -1913,6 +1940,62 @@ figure figcaption a:focus-visible{
   display:flex;
   align-items:center;
   gap:10px;
+}
+
+.site-header .site-nav a,
+.site-header .site-nav summary{
+  color:var(--header-fg-muted);
+}
+
+.site-header .site-nav a:hover,
+.site-header .site-nav a:focus-visible,
+.site-header .site-nav summary:hover,
+.site-header .site-nav summary:focus-visible{
+  color:var(--header-fg-strong);
+}
+
+.site-header .site-nav a::after,
+.site-header .site-nav summary::before{
+  background:var(--header-fg-strong);
+}
+
+.site-header .lang-toggle,
+.site-header .theme-toggle,
+.site-header .nav-toggle{
+  border-color:var(--header-border);
+  color:var(--header-fg);
+  background:rgba(255,255,255,.08);
+}
+
+.site-header .lang-toggle:hover,
+.site-header .lang-toggle:focus-visible,
+.site-header .theme-toggle:hover,
+.site-header .theme-toggle:focus-visible,
+.site-header .nav-toggle:hover,
+.site-header .nav-toggle:focus-visible{
+  color:var(--header-fg-strong);
+  border-color:rgba(255,255,255,.32);
+  background:rgba(255,255,255,.14);
+}
+
+.site-header .theme-toggle[aria-pressed="true"]{
+  color:var(--header-fg-strong);
+  border-color:rgba(255,255,255,.36);
+  background:rgba(255,255,255,.18);
+}
+
+.site-header .theme-toggle.theme-toggle--icon{
+  color:var(--header-fg-strong);
+  background:rgba(255,255,255,.12);
+  box-shadow:none;
+}
+
+.site-header .theme-toggle.theme-toggle--icon:hover,
+.site-header .theme-toggle.theme-toggle--icon:focus-visible{
+  border-color:rgba(255,255,255,.36);
+  background:rgba(255,255,255,.18);
+  box-shadow:none;
+  transform:translateY(-1px);
 }
 
 .site-nav{
@@ -2313,7 +2396,7 @@ figure figcaption a:focus-visible{
 :root[data-theme="dark"] .site-nav .nav-menu,
 :root[data-theme="dark"] .lang-menu-panel{
   border-color:rgba(47,110,166,.42);
-  background:linear-gradient(180deg, rgba(14,23,19,.94), rgba(10,17,14,.92));
+  background:linear-gradient(180deg, rgba(16,29,46,.96), rgba(10,20,32,.94));
   box-shadow:0 28px 68px rgba(0,0,0,.5);
 }
 
@@ -2325,7 +2408,7 @@ figure figcaption a:focus-visible{
   :root:not([data-theme="light"]) .site-nav .nav-menu,
   :root:not([data-theme="light"]) .lang-menu-panel{
     border-color:rgba(47,110,166,.42);
-    background:linear-gradient(180deg, rgba(14,23,19,.94), rgba(10,17,14,.92));
+    background:linear-gradient(180deg, rgba(16,29,46,.96), rgba(10,20,32,.94));
     box-shadow:0 28px 68px rgba(0,0,0,.5);
   }
 

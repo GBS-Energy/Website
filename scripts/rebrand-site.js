@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 const root = path.resolve(__dirname, '..');
-const assetVersion = '20260623-02';
+const assetVersion = '20260623-06';
 
 const targets = [];
 for (const file of fs.readdirSync(root)) {
@@ -18,13 +18,19 @@ targets.push(path.join(root, 'kontakt-handler.php'));
 const replacements = [
   ['site.css?v=20260622-04', `site.css?v=${assetVersion}`],
   ['site.css?v=20260623-01', `site.css?v=${assetVersion}`],
+  ['site.css?v=20260623-02', `site.css?v=${assetVersion}`],
+  ['site.css?v=20260623-05', `site.css?v=${assetVersion}`],
   ['site.js?v=20260622-04', `site.js?v=${assetVersion}`],
   ['site.js?v=20260623-01', `site.js?v=${assetVersion}`],
+  ['site.js?v=20260623-02', `site.js?v=${assetVersion}`],
+  ['site.js?v=20260623-05', `site.js?v=${assetVersion}`],
   ['GBS AG (Green Building Solutions)', 'GBS Energy GmbH'],
   ['Green Building Solutions AG', 'GBS Energy GmbH'],
   ['GBS AG', 'GBS Energy GmbH'],
   ['rgba(95,174,138', 'rgba(47,110,166'],
-  ['theme-color" content="#ffffff"', 'theme-color" content="#ebf2fb"'],
+  ['theme-color" content="#ffffff"', 'theme-color" content="#2f6ea6"'],
+  ['content="#ffffff" name="theme-color"', 'content="#2f6ea6" name="theme-color"'],
+  ['theme-color" content="#ebf2fb"', 'theme-color" content="#2f6ea6"'],
 ];
 
 let updatedFiles = 0;
