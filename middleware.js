@@ -37,7 +37,12 @@ export default function middleware(request) {
   const pass = decoded.slice(separator + 1);
 
   if (user === expectedUser && pass === expectedPass) {
-    return;
+    return new Response(null, {
+      status: 200,
+      headers: {
+        'x-middleware-next': '1',
+      },
+    });
   }
 
   return unauthorized();
